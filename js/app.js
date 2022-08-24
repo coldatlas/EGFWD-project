@@ -13,31 +13,6 @@
  * 
 */
 
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
-
-/**
- * Define Global Variables
- * 
-*/
-
-
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
-
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
-
 // build the nav
 const sections = document.querySelectorAll('section');
 const ul = document.getElementById('navbar__list');
@@ -65,9 +40,10 @@ sections.forEach(function (section) {
 });
 ul.appendChild(fragment);
 
-// Add class 'active' to section when near top of viewport
 const callbackObserverFunction = entries =>{
+    // Add class 'active' to section when near top of viewport
     const activeLink = document.querySelector('a[href="#${entries[0].target.id}"]');
+    // Set sections as active
     if(entries[0].isIntersecting){
         entries[0].target.classList.add("your-active-section");
     }else{
@@ -77,13 +53,12 @@ const callbackObserverFunction = entries =>{
 }
 const options = {
     root: null,
-    rootMargin: '0px',
-    threshold: 0.35
+    rootMargin: '1px',
+    threshold: 0.40
 }
 const observer = new IntersectionObserver(callbackObserverFunction, options);
 window.addEventListener('scroll', function(){
     sections.forEach(section =>{
         observer.observe(section);
-    })
-})
-// Set sections as active
+    });
+});
