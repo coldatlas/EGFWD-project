@@ -37,6 +37,29 @@ alert("This alert box was called with the onload event");
  * Begin Main Functions
  * 
 */
+//const sections = document.querySelectorAll('section');
+
+const sections = document.getElementsByTagName('section');
+const ul = document.getElementById('navbar__list');
+
+sections.forof(function(section){
+    const sectionId = section.id;
+    const sectionTitle = section.dataset.nav;
+    //li & a creation
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = '#${sectionId}'; // "#"+ section ID
+    link.textContent = sectionTitle;
+    link.classList.add('menu__link');
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        section.scrollIntoView({
+            behavior: 'smooth',
+        });
+    });
+    li.appendChild(link);
+    ul.appendChild(li);
+})
 
 // build the nav
 
