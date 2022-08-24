@@ -16,7 +16,7 @@
 // build the nav
 const sections = document.querySelectorAll('section');
 const ul = document.getElementById('navbar__list');
-const fragment = document.createDocumentFragment();
+const fragments = document.createDocumentFragment();
 sections.forEach(function (section) {
     const sectionId = section.id;
     const sectionTitle = section.dataset.nav;
@@ -36,7 +36,7 @@ sections.forEach(function (section) {
         
     });
     li.appendChild(link);
-    fragment.appendChild(li);
+    fragments.appendChild(li);
 });
 ul.appendChild(fragment);
 
