@@ -38,7 +38,7 @@ sections.forEach(function (section) {
     li.appendChild(link);
     fragments.appendChild(li);
 });
-ul.appendChild(fragment);
+ul.appendChild(fragments);
 
 const callbackObserverFunction = entries =>{
     // Add class 'active' to section when near top of viewport
