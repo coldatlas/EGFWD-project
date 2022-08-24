@@ -12,7 +12,7 @@
  * JS Standard: ESlint
  * 
 */
-alert("This alert box was called with the onload event");
+
 /**
  * Comments should be present at the beginning of each procedure and class.
  * Great to have comments before crucial code sections within the procedure.
@@ -39,16 +39,16 @@ alert("This alert box was called with the onload event");
 */
 //const sections = document.querySelectorAll('section');
 
-const sections = document.getElementsByTagName('section');
+const sections = document.querySelectorAll('section');
 const ul = document.getElementById('navbar__list');
-
-sections.forof(function(section){
+const fragment = document.createDocumentFragment();
+sections.forEach(function (section) {
     const sectionId = section.id;
     const sectionTitle = section.dataset.nav;
     //li & a creation
     const li = document.createElement('li');
     const link = document.createElement('a');
-    link.href = '#${sectionId}'; // "#"+ section ID
+    link.href = '#'+sectionId; // "#"+ section Id;
     link.textContent = sectionTitle;
     link.classList.add('menu__link');
     link.addEventListener('click', (e) => {
@@ -58,8 +58,9 @@ sections.forof(function(section){
         });
     });
     li.appendChild(link);
-    ul.appendChild(li);
-})
+    fragment.appendChild(li);
+});
+ul.appendChild(fragment);
 
 // build the nav
 
