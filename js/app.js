@@ -14,7 +14,9 @@
 */
 
 // build the nav
+
 const sections = document.querySelectorAll('section');
+console.log(sections);
 const ul = document.getElementById('navbar__list');
 const fragments = document.createDocumentFragment();
 sections.forEach(function (section) {
@@ -33,32 +35,42 @@ sections.forEach(function (section) {
         section.scrollIntoView({
             behavior: 'smooth',
         });
-        
     });
     li.appendChild(link);
     fragments.appendChild(li);
 });
 ul.appendChild(fragments);
+//
 
-const callbackObserverFunction = entries =>{
-    // Add class 'active' to section when near top of viewport
-    const activeLink = document.querySelector('a[href="#${entries[0].target.id}"]');
-    // Set sections as active
-    if(entries[0].isIntersecting){
-        entries[0].target.classList.add("your-active-section");
+
+
+
+
+
+//
+const callbackObserverFunction = i =>{
+    if(i[0].isIntersecting){
+        i[0].target.classList.add("your-active-section");
     }else{
-        entries[0].target.classList.remove("your-active-section");
-        activeLink.classList.remove('active');
+        i[0].target.classList.remove("your-active-section");
     }
 }
+//
+
+
+//
 const options = {
     root: null,
     rootMargin: '1px',
     threshold: 0.40
 }
-const observer = new IntersectionObserver(callbackObserverFunction, options);
+//
+
+
+//
 window.addEventListener('scroll', function(){
-    sections.forEach(section =>{
-        observer.observe(section);
+    sections.forEach(i =>{
+        new IntersectionObserver(callbackObserverFunction, options).observe(i);
     });
 });
+//
