@@ -41,7 +41,7 @@ window.onscroll = () => {
       if (location.top >= 0 && location.left >= 0 && location.bottom <= window.innerHeight && location.right <= window.innerWidth) {
         section.classList.add("your-active-section");
         links.forEach((link) => {
-            link.innerText[8] == section.id[7] ? link.classList.add("active__link") : link.classList.remove("active__link");
+            link.innerText[8] == section.id[7] ? link.classList.add("active__link") : link.classList.remove("active__link"); //add/remove active class to nav links
         })   
     } else {
       section.classList.remove("your-active-section")
