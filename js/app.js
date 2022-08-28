@@ -9,7 +9,7 @@ let ul = document.querySelector("ul");
 sections.forEach(section => {
     var li = document.createElement("li");            //create li
     var anchor = document.createElement("a");         //create a
-    anchor.setAttribute("href", "#" + section.id);    //add href attribute to ad
+    anchor.setAttribute("href", "#" + section.id);    //add href attribute to a
     anchor.innerText = "Section " + section.id[7];    //add text to a
     anchor.classList.add("menu__link");               //add css class to a
     anchor.addEventListener('click', (event) => {
