@@ -25,7 +25,12 @@ sections.forEach(section => {
 
     ul.appendChild(li).appendChild(anchor);           //add li and a to the ul
 });
-const links = document.querySelectorAll("a");
+
+
+// function that hides navbar
+function hideNav() {
+    document.querySelector("header").style.opacity = 0;
+}
 
 // adding and removing active classes to/from sections when scrolling
 window.onscroll = () => {
@@ -39,13 +44,12 @@ window.onscroll = () => {
     }
     });  
 
-    // remove navbar when not active for 2 seconds
+    // remove navbar when not scrolling for 2 seconds
     const timer = setTimeout(hideNav, 2000);
-    function hideNav() {
-    document.querySelector("header").style.opacity = 0;
-}
+    
 };
 
-
-
-
+// remove navbar when not moving cursor for 2 seconds
+onmousemove = (event) => { document.querySelector("header").style.opacity = 1;
+const timer = setTimeout(hideNav, 2000);
+};
