@@ -26,7 +26,8 @@ sections.forEach(section => {
     ul.appendChild(li).appendChild(anchor);           //add li and a to the ul
 });
 
-
+const links = document.querySelectorAll("a");
+console.log(links);
 // function that hides navbar
 function hideNav() {
     document.querySelector("header").style.opacity = 0;
@@ -38,7 +39,10 @@ window.onscroll = () => {
     sections.forEach((section) => {
       var location = section.getBoundingClientRect();
       if (location.top >= 0 && location.left >= 0 && location.bottom <= window.innerHeight && location.right <= window.innerWidth) {
-        section.classList.add("your-active-section");    
+        section.classList.add("your-active-section");
+        links.forEach((link) => {
+            link.innerText[8] == section.id[7] ? link.classList.add("active__link") : link.classList.remove("active__link");
+        })   
     } else {
       section.classList.remove("your-active-section")
     }
