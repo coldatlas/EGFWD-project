@@ -99,6 +99,9 @@ section {
 }
 
 /* Header Styles */
+header {
+    transition: opacity 0.5s;
+}
 .page__header {
     background: #fff;
     position: fixed;
