@@ -16,6 +16,8 @@ body {
     margin: 0;
     font-family: 'Merriweather', serif;
     color: #fff;
+    scroll-behavior: smooth;
+
 }
 
 
@@ -90,7 +92,7 @@ section {
     transition: ease 0.3s all;
 }
 
-.active_link {
+.active__link {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;

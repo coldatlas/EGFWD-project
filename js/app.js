@@ -1,76 +1,41 @@
-/**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
+// linking the section elements
 
-// build the nav
+const sections = document.querySelectorAll("section");
 
-const sections = document.querySelectorAll('section');
-console.log(sections);
-const ul = document.getElementById('navbar__list');
-const fragments = document.createDocumentFragment();
-sections.forEach(function (section) {
-    const sectionId = section.id;
-    const sectionTitle = section.dataset.nav;
-    //li & a creation
-    const li = document.createElement('li');
-    const link = document.createElement('a');
-    link.href = '#'+sectionId; // "#"+ section Id;
-    link.textContent = sectionTitle;
-    link.classList.add('menu__link');
-    // Scroll to section on link click
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        // Scroll to anchor ID using scrollTO event
+// linking the navbar
+let ul = document.querySelector("ul");
+
+// adding li items automatically to navbar
+sections.forEach(section => {
+    var li = document.createElement("li");            //create li
+    var anchor = document.createElement("a");         //create a
+    anchor.setAttribute("href", "#" + section.id);    //add href attribute to ad
+    anchor.innerText = "Section " + section.id[7];    //add text to a
+    anchor.classList.add("menu__link");               //add css class to a
+    anchor.addEventListener('click', (event) => {
+
+        //clears address id link
+        event.preventDefault();
+        
+        //scroll to the specific section smoothly
         section.scrollIntoView({
             behavior: 'smooth',
         });
     });
-    li.appendChild(link);
-    fragments.appendChild(li);
+
+    ul.appendChild(li).appendChild(anchor);           //add li and a to the ul
 });
-ul.appendChild(fragments);
-//
+const links = document.querySelectorAll("a");
 
-
-
-
-
-
-//
-const callbackObserverFunction = i =>{
-    if(i[0].isIntersecting){
-        i[0].target.classList.add("your-active-section");
-    }else{
-        i[0].target.classList.remove("your-active-section");
+// adding and removing active classes to/from sections when scrolling
+window.onscroll = () => {
+    sections.forEach((section) => {
+      var location = section.getBoundingClientRect();
+      if (location.top >= 0 && location.left >= 0 && location.bottom <= window.innerHeight && location.right <= window.innerWidth) {
+        section.classList.add("your-active-section");    
+    } else {
+      section.classList.remove("your-active-section")
     }
-}
-//
-
-
-//
-const options = {
-    root: null,
-    rootMargin: '1px',
-    threshold: 0.40
-}
-//
-
-
-//
-window.addEventListener('scroll', function(){
-    sections.forEach(i =>{
-        new IntersectionObserver(callbackObserverFunction, options).observe(i);
-    });
-});
-//
+    });  
+    
+};
