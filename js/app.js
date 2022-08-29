@@ -38,7 +38,7 @@ window.onscroll = () => {
     document.querySelector("header").style.opacity = 1;  // the navbar reappears
     sections.forEach((section) => {
       var location = section.getBoundingClientRect();
-      if (location.top >= 0 && location.left >= 0 && location.bottom <= window.innerHeight && location.right <= window.innerWidth) {
+      if (location.top >= 0 && location.left >= 0) {
         section.classList.add("your-active-section");
         links.forEach((link) => {
             link.innerText[8] == section.id[7] ? link.classList.add("active__link") : link.classList.remove("active__link"); //add/remove active class to nav links
@@ -49,11 +49,11 @@ window.onscroll = () => {
     });  
 
     // remove navbar when not scrolling for 2 seconds
-    const timer = setTimeout(hideNav, 2000);
+    setTimeout(hideNav, 2000);
     
 };
 
 // remove navbar when not moving cursor for 2 seconds
-onmousemove = (event) => { document.querySelector("header").style.opacity = 1;
-const timer = setTimeout(hideNav, 2000);
+onmousemove = () => { document.querySelector("header").style.opacity = 1;
+setTimeout(hideNav, 2000);
 };
