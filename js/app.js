@@ -38,7 +38,7 @@ window.onscroll = () => {
     document.querySelector("header").style.opacity = 1;  // the navbar reappears
     sections.forEach((section) => {
       var location = section.getBoundingClientRect();
-      if (location.top >= 0 && location.left >= 0) {
+      if (location.top >= -200 && location.bottom <= window.innerHeight + (window.innerHeight/2) ) {
         section.classList.add("your-active-section");
         links.forEach((link) => {
             link.innerText[8] == section.id[7] ? link.classList.add("active__link") : link.classList.remove("active__link"); //add/remove active class to nav links
