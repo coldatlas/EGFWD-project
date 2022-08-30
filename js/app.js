@@ -7,8 +7,8 @@ let ul = document.querySelector("ul");
 
 // adding li items automatically to navbar
 sections.forEach(section => {
-    var li = document.createElement("li");            //create li
-    var anchor = document.createElement("a");         //create a
+    let li = document.createElement("li");            //create li
+    let anchor = document.createElement("a");         //create a
     anchor.setAttribute("href", "#" + section.id);    //add href attribute to a
     anchor.innerText = "Section " + section.id[7];    //add text to a
     anchor.classList.add("menu__link");               //add css class to a
@@ -27,7 +27,7 @@ sections.forEach(section => {
 });
 
 const links = document.querySelectorAll("a");
-console.log(links);
+
 // function that hides navbar
 function hideNav() {
     document.querySelector("header").style.opacity = 0;
@@ -37,7 +37,7 @@ function hideNav() {
 window.onscroll = () => {
     document.querySelector("header").style.opacity = 1;  // the navbar reappears
     sections.forEach((section) => {
-      var location = section.getBoundingClientRect();
+      let location = section.getBoundingClientRect();
       if (location.top >= -200 && location.bottom <= window.innerHeight + (window.innerHeight/2) ) {
         section.classList.add("your-active-section");
         links.forEach((link) => {
